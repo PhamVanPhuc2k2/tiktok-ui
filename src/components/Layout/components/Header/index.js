@@ -23,6 +23,8 @@ import Menu from '~/components/Popper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -98,7 +100,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="TikTok" />
+                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                        <img src={images.logo} alt="TikTok" />
+                    </Link>
                 </div>
                 <Search />
 
@@ -130,13 +134,13 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <>
+                            <div>
                                 <Image
                                     className={cx('user-avatar')}
                                     src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/2edd2a5a542ffb6f8b862914f4b2c29d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&nonce=39816&refresh_token=5624d177d5b7e89e95bfb2dafcbdd45e&x-expires=1740726000&x-signature=VVaCKLQa5q2pw3OVlyb%2FbLiDPl0%3D&idc=my&ps=13740610&shcp=81f88b70&shp=a5d48078&t=4d5b0474"
                                     alt="Nguyen Van A"
                                 />
-                            </>
+                            </div>
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
